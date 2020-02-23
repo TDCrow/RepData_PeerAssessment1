@@ -370,7 +370,7 @@ summary {
 <h2>Loading and preprocessing the data</h2>
 <p>Show any code that is needed to</p>
 <ol style="list-style-type: decimal">
-<li>Load the data (i.e. read.csv())</li>
+<li>Load the data</li>
 </ol>
 <pre class="r"><code>activity &lt;- unzip(&quot;activity.zip&quot;)
 data &lt;- read.csv(&quot;activity.csv&quot;)</code></pre>
@@ -402,7 +402,7 @@ data &lt;- read.csv(&quot;activity.csv&quot;)</code></pre>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
 <ol style="list-style-type: decimal">
-<li>Make a time series plot (i.e. type=“l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
+<li>Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
 </ol>
 <pre class="r"><code>stepsperinteval &lt;- with(data, tapply(steps, interval, mean, na.rm = TRUE))
 plot(x = names(stepsperinteval), y = stepsperinteval, type = &quot;l&quot;, xlab = &quot;interval&quot;, ylab = &quot;average steps&quot;)</code></pre>
