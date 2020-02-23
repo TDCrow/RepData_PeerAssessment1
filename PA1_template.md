@@ -39,10 +39,10 @@ stepsperday <- with(data, tapply(steps, date, sum))
 2. If you do not understand the difference between a histogram and a 3. barplot, research the difference between them. Make a histogram of the total number of steps taken each day
 
 ```r
-hist(stepsperday, breaks =10, xlab = "Total number of steps per day", ylim = c(0,25))
+hist(stepsperday, breaks =10, xlab = "Total number of steps per day", ylim = c(0,25), main = "Histogram of total number of steps per day (NAs ignored)")
 ```
 
-![](PA1_template_files/figure-html/histogram of total number of steps per day with missing values ignored-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_of_total_number_of_steps_per_day_with_missing_values_ignored-1.png)<!-- -->
 
 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -64,7 +64,7 @@ stepsperinteval <- with(data, tapply(steps, interval, mean, na.rm = TRUE))
 plot(x = names(stepsperinteval), y = stepsperinteval, type = "l", xlab = "interval", ylab = "average steps")
 ```
 
-![](PA1_template_files/figure-html/time series plot of average number of steps averaged across all days-1.png)<!-- -->
+![](PA1_template_files/figure-html/time_series_plot_of_average_number_of_steps_averaged_across_all_days-1.png)<!-- -->
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -112,10 +112,10 @@ data_noNA <- unsplit(data_split, data$interval)
 
 ```r
 stepsperday_noNA <- with(data_noNA, tapply(steps, date, sum))
-hist(stepsperday_noNA, breaks =10, ylim = c(0,25))
+hist(stepsperday_noNA, breaks =10, ylim = c(0,25),xlab = "Total number of steps per day", main = "Histogram of total number of steps per day (NAs changed)")
 ```
 
-![](PA1_template_files/figure-html/histogram of total number of steps per day with missing values included as the average of the inteval-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_of_total_number_of_steps_per_day_with_missing_values_included_as_the_average_of_the_inteval-1.png)<!-- -->
 
 Calculate and report the mean and median total number of steps taken per day.
 
@@ -158,6 +158,6 @@ abline(h = 100, col = "red")
 text(250, 120, "steps = 100", col = "red")
 ```
 
-![](PA1_template_files/figure-html/Panel plot comparing average number of steps per inteval split by weekend or weekday-1.png)<!-- -->
+![](PA1_template_files/figure-html/Panel_plot_comparing_average_number_of_steps_per_inteval_split_by_weekend_or_weekday-1.png)<!-- -->
 
 As you can see from the above graphs, the maximum average steps occurs during weekdays, with over 200 steps on average for that interval. However, the steps are more consistently higher on average on the weekend, with 100 steps per interval being achieved on average at multiple times throughout the day. This is not the case during weekdays.
