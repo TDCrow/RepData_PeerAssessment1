@@ -35,7 +35,7 @@ stepsperday <- with(data, tapply(steps, date, sum))
 ```
 
 2. If you do not understand the difference between a histogram and a 3. barplot, research the difference between them. Make a histogram of the total number of steps taken each day
-```{r}
+```{r histogram of total number of steps per day with missing values ignored}
 hist(stepsperday, breaks =10, xlab = "Total number of steps per day", ylim = c(0,25))
 ```
 
@@ -48,7 +48,7 @@ c(mean = mean(stepsperday, na.rm = TRUE),median = median(stepsperday, na.rm = TR
 ## What is the average daily activity pattern?
 
 1. Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
-```{r}
+```{r time series plot of average number of steps averaged across all days}
 stepsperinteval <- with(data, tapply(steps, interval, mean, na.rm = TRUE))
 plot(x = names(stepsperinteval), y = stepsperinteval, type = "l", xlab = "interval", ylab = "average steps")
 
@@ -85,7 +85,7 @@ data_noNA <- unsplit(data_split, data$interval)
 ```
 
 4. Make a histogram of the total number of steps taken each day 
-```{r}
+```{r histogram of total number of steps per day with missing values included as the average of the inteval}
 stepsperday_noNA <- with(data_noNA, tapply(steps, date, sum))
 hist(stepsperday_noNA, breaks =10, ylim = c(0,25))
 ```
@@ -113,7 +113,7 @@ data_noNA_weekdays <- with(data_noNA, tapply(steps, list(interval, weekdays), me
 ```
 
 2. Make a panel plot containing a time series plot (i.e. \color{red}{\verb|type = "l"|}type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
-```{r Panel plot}
+```{r Panel plot comparing average number of steps per inteval split by weekend or weekday}
 par(mfrow = c(2,1), mar = c(4,4,2,1))
 plot(rownames(data_noNA_weekdays), data_noNA_weekdays[,1], type = "l", main = colnames(data_noNA_weekdays)[1], xlab = "Interval", ylab = "average steps", ylim = c(0,250))
 abline(h = 100, col = "red")
